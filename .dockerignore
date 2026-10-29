@@ -1,0 +1,4 @@
+source/
+stub.php
+build/
+*.phar

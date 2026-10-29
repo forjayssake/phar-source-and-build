@@ -1,0 +1,15 @@
+services:
+  extract:
+    build: .
+    volumes:
+      # The project, including app.phar, so the PHAR can be read and source/ and stub.php
+      # are written back to the host.
+      - .:/app
+
+  # Repackages source/ with stub.php into build/. The output path can be passed as the argument.
+  build:
+    build: .
+    entrypoint: ["php", "-d", "phar.readonly=0", "build.php"]
+    command: []
+    volumes:
+      - .:/app
